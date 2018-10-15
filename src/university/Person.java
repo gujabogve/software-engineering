@@ -1,5 +1,7 @@
 package university;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Person {
@@ -12,25 +14,28 @@ public class Person {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        if (lastName.length() > 3 && lastName.length() < 20)
-            this.lastName = lastName;
+    public Person setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public Person setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public Person setBirthday(String birthday) throws ParseException {
+        SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
+        this.birthday = dateParser.parse(birthday);
+        return this;
     }
 
 }
