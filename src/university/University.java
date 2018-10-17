@@ -1,6 +1,5 @@
 package university;
 
-import java.text.ParseException;
 import java.util.List;
 
 public class University {
@@ -16,9 +15,7 @@ public class University {
         return rector;
     }
 
-    public void setRector(String rector) {
-        this.rector = rector;
-    }
+    public void setRector(String rector) { this.rector = rector; }
 
     public String getAddress() {
         return address;

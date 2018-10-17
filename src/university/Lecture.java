@@ -3,6 +3,7 @@ package university;
 import java.util.List;
 
 public class Lecture {
+
     private Lecturer lecturer;
     private List<Student> students;
     private Room room;

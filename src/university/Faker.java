@@ -11,7 +11,6 @@ public class Faker {
 
     public static List<Student> students(int n) throws ParseException {
         List<Student> students = new ArrayList<>();
-
         for (int i = 1; i <= n; i++) {
             Student student = new Student();
             student.setFirstName("student" + i)
@@ -24,7 +23,6 @@ public class Faker {
 
     public static List<Lecturer> lecturers(int n) throws ParseException {
         List<Lecturer> lecturers = new ArrayList<>();
-
         for (int i = 1; i <= n; i++) {
 
             Lecturer lecturer = new Lecturer();
@@ -36,15 +34,11 @@ public class Faker {
         return lecturers;
     }
 
-    public static List<Faculty> facultis(int n, List<Lecturer> lecturers, List<Room> rooms) {
+    public static List<Faculty> facultis(int n, List<Lecturer> lecturers, List<Student> students, List<Room> rooms) {
         List<Faculty> faculties = new ArrayList<>();
-
         for (int i = 0; i < n; i++) {
-
-            int rand = (new Random()).nextInt(100) + 1;
-
+            int rand = (new Random()).nextInt(students.size()) + 1;
             Faculty faculty = new Faculty();
-
             faculty.setName("faculty" + i);
             faculty.setLectures(lectures(rand, lecturers, rooms));
             faculties.add(faculty);
@@ -54,25 +48,20 @@ public class Faker {
 
     public static List<Lecture> lectures(int n, List<Lecturer> lecturers, List<Room> rooms) {
         List<Lecture> lectures = new ArrayList<>();
-
         for (int i = 1; i <= n; i++) {
-            int lecturer = (new Random()).nextInt(10) + 1;
-            int room = (new Random()).nextInt(999) + 1;
-
+            int lecturer = (new Random()).nextInt(lecturers.size()) + 1;
+            int room = (new Random()).nextInt(rooms.size()) + 1;
             Lecture lecture = new Lecture();
             lecture.setLecturer(lecturers.get(lecturer - 1));
             lecture.setName("lecture" + i);
             lecture.setRoom(rooms.get(room - 1));
-
             lectures.add(lecture);
         }
-
         return lectures;
     }
 
     public static List<Room> rooms(int n) {
         List<Room> rooms = new ArrayList<>();
-
         for (int i = 0; i <= n; i++) {
             int seats = (new Random()).nextInt(50) + 1;
             Room room = new Room();
@@ -84,8 +73,6 @@ public class Faker {
             room.setNumber(i);
             rooms.add(room);
         }
-
         return rooms;
-
     }
 }
