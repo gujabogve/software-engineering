@@ -5,5 +5,10 @@ public class Cda {
         Animator a = new Animator();
         Line l = new Line();
         a.animate(l);
+
+        ShapeAnimator sa = new ShapeAnimator();
+        Triangle t = new Triangle();
+        sa.animate(t);
+
     }
 }
